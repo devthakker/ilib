@@ -6,8 +6,8 @@ ILIB is a library of technical indicators that can be used to build trading stra
 
 [![Python](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/downloads/release/python-370/)
 [![PyPI](https://img.shields.io/pypi/v/ilib)](https://pypi.org/project/ilib/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/ilib)](https://pypi.org/project/ilib/)
-![GitHub](https://img.shields.io/github/license/rohitgupta-iitm/ilib)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/ilib)](https://img.shields.io/github/downloads/devthakker/ilib/total.svg)
+![GitHub](https://img.shields.io/github/license/devthakker/ilib)
 
 ## Features
 

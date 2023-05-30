@@ -7,7 +7,6 @@ setup(
         packages=find_packages(),
         license='MIT',
         description='A package for various technical indicators',
-        long_description=open('README.md').read(),
         install_requires=['numpy', 'pandas'],
         author='Devin Thakker',
         author_email='devin.thakker@outlook.com',

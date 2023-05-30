@@ -17,8 +17,8 @@ setup(
         classifiers=[
             'Development Status :: 3 - Alpha',
             'Programming Language :: Python :: 3.7',
-            'Intended Audience :: Algorithmic Traders',
-            'License :: MIT License',
+            'Intended Audience :: Developers',
+            'License :: MIT',
             ],
         python_requires='>=3.7'
 )

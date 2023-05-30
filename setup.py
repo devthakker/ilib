@@ -17,5 +17,5 @@ setup(
             'Intended Audience :: Algorithmic Traders',
             'License :: MIT License',
             ],
-        python_requires='>=3.6.0'
+        python_requires='>=3.7'
 )

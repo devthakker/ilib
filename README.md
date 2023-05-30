@@ -4,6 +4,19 @@
 
 ILIB is a library of technical indicators that can be used to build trading strategies. It is written in Python and uses the [Pandas](https://pandas.pydata.org/docs/) and [Numpy](https://numpy.org/doc/stable/) library for data manipulation and [Matplotlib](https://matplotlib.org/) for charting.
 
+[![Python](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/downloads/release/python-370/)
+[![PyPI](https://img.shields.io/pypi/v/ilib)](https://pypi.org/project/ilib/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/ilib)](https://pypi.org/project/ilib/)
+![GitHub](https://img.shields.io/github/license/rohitgupta-iitm/ilib)
+
+## Features
+
+- Implements various popular technical indicators for financial analysis.
+- Simple and intuitive API for easy integration into your trading systems.
+- Supports Python 3.7 and above.
+- Well-documented codebase and example usage for each indicator.
+
+
 ## Installation
 
 ```bash

@@ -10,8 +10,8 @@ License: MIT
 Keywords: ilib,technical indicators,finance,trading,stocks,crypto
 Classifier: Development Status :: 3 - Alpha
 Classifier: Programming Language :: Python :: 3.7
-Classifier: Intended Audience :: Algorithmic Traders
-Classifier: License :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: License :: MIT
 Requires-Python: >=3.7
 License-File: LICENSE
 

@@ -54,6 +54,3 @@ class AverageTrueRange:
         """Return the current ATR value."""
         return self.ATR
     
-price = [1,2,3,4,5,6,7,8,9,10]
-atr = AverageTrueRange(5, price, price, price)
-print(atr.get_ATR())

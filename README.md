@@ -34,6 +34,7 @@ pip install ilib
 - [x] [Relative Strength Index](https://www.investopedia.com/terms/r/rsi.asp)
 - [x] [Simple Moving Average](https://www.investopedia.com/terms/s/sma.asp)
 - [x] [Stochastic Oscillator](https://www.investopedia.com/terms/s/stochasticoscillator.asp)
+- [x] [Stochastic RSI](https://www.investopedia.com/terms/s/stochrsi.asp)
 - [x] [Volume Weighted Average Price](https://www.investopedia.com/terms/v/vwap.asp)
 
 ## Usage

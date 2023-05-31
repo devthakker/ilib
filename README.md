@@ -25,6 +25,8 @@ pip install ilib
 
 ## Available Indicators
 
+- [x] [Average True Range](https://www.investopedia.com/terms/a/atr.asp)
+- [x] [Average Directional Index](https://www.investopedia.com/terms/a/adx.asp)
 - [x] [Bollinger Bands](https://www.investopedia.com/terms/b/bollingerbands.asp)
 - [x] [Commodity Channel Index](https://www.investopedia.com/terms/c/commoditychannelindex.asp)
 - [x] [Exponential Moving Average](https://www.investopedia.com/terms/e/ema.asp)
@@ -32,6 +34,7 @@ pip install ilib
 - [x] [Relative Strength Index](https://www.investopedia.com/terms/r/rsi.asp)
 - [x] [Simple Moving Average](https://www.investopedia.com/terms/s/sma.asp)
 - [x] [Stochastic Oscillator](https://www.investopedia.com/terms/s/stochasticoscillator.asp)
+- [x] [Volume Weighted Average Price](https://www.investopedia.com/terms/v/vwap.asp)
 
 ## Usage
 

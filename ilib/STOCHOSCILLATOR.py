@@ -1,4 +1,11 @@
 class STOCHOSCILLATOR:
+    """
+    Stochastic Oscillator
+    
+    Formula:
+    %K = (Current Close - Lowest Low)/(Highest High - Lowest Low) * 100
+    %D = 3-day SMA of %K
+    """
     def __init__(self, period, smoothing_period, oversold_threshold, overbought_threshold,high_prices=None, low_prices=None, close_prices=None):
         self.stoch = None
         self.smoothed = None
@@ -13,6 +20,9 @@ class STOCHOSCILLATOR:
             self.calculate()
 
     def calculate(self):
+        """
+        Calculates the stochastic oscillator.
+        """
         if len(self.high_prices) < self.period:
             return None
         highest_high = max(self.high_prices)
@@ -27,13 +37,22 @@ class STOCHOSCILLATOR:
 
         self.stoch, self.smoothed =  stochastic_value, smoothed_stochastic
 
-    def is_oversold(self, stochastic_value):
+    def is_oversold(self):
+        """
+        Returns True if the stochastic oscillator is oversold.
+        """
         return self.stoch <= self.oversold_threshold
 
-    def is_overbought(self, stochastic_value):
+    def is_overbought(self):
+        """
+        Returns True if the stochastic oscillator is overbought.""
+        """
         return self.stoch >= self.overbought_threshold
     
     def add_data_point(self, high, low, close):
+        """
+        Adds a data point to the stochastic oscillator.
+        """
         self.high_prices.append(high)
         self.low_prices.append(low)
         self.close_prices.append(close)
@@ -43,7 +62,13 @@ class STOCHOSCILLATOR:
             self.close_prices = self.close_prices[-self.period:]
     
     def get_stoch(self):
+        """
+        Returns the stochastic oscillator.
+        """
         return self.stoch
     
     def get_smoothed(self):
+        """
+        Returns the smoothed stochastic oscillator.
+        """
         return self.smoothed

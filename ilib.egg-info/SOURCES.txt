@@ -2,12 +2,17 @@ LICENSE
 README.md
 setup.cfg
 setup.py
+ilib/ADX.py
+ilib/ATR.py
+ilib/BOLLINGERBANDS.py
 ilib/BollingerBands.py
 ilib/CCI.py
 ilib/EMA.py
 ilib/MACD.py
 ilib/RSI.py
 ilib/SMA.py
+ilib/STOCHOSCILLATOR.py
+ilib/VWAP.py
 ilib/__init__.py
 ilib.egg-info/PKG-INFO
 ilib.egg-info/SOURCES.txt

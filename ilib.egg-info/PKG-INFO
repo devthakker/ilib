@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: ilib
-Version: 0.1
+Version: 0.1.1
 Summary: A package for various technical indicators
 Home-page: https://github.com/devthakker/ilib
-Download-URL: https://github.com/devthakker/ilib/archive/refs/tags/v0.1.tar.gz
+Download-URL: https://github.com/devthakker/ilib/archive/refs/tags/v0.1.1.tar.gz
 Author: Devin Thakker
 Author-email: devin.thakker@outlook.com
 License: MIT

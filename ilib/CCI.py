@@ -51,6 +51,19 @@ class CCI:
 
         self.cci = [(typical_price - sma) / (0.015 * mda) for typical_price in typical_prices]
         
+    def add_data_point(self, price):
+        """
+        Add a new price to the data list and recalculate the CCI.
+        
+        Parameters:
+            price (float): The latest price.
+        Returns:
+            null: The CCI is stored in the cci attribute.
+        """
+        self.data.append(price)
+        if len(self.data) > self.period:
+            self.calculate_cci()
+        
     def get_cci(self):
         """Return the current CCI value.
 

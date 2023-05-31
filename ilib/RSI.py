@@ -22,7 +22,7 @@ class RSI:
             if len(self.data) > self.period:
                 self.calculate_rsi()
 
-    def add_data(self, value):
+    def add_data_point(self, value):
         """
         Add a new price to the data list and calculate the new RSI.
         """

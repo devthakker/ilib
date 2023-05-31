@@ -67,13 +67,6 @@ class MACD:
 
         return ema
     
-    def get_lines(self):
-        """
-        Returns:
-            tuple: The calculated MACD line, signal line, and MACD histogram.
-        """
-        return self.macd_line[-1], self.signal_line[-1], self.macd_histogram[-1]
-    
     def add_data_point(self, data_point):
         """
         Add a new data point to the existing data and recalculate the MACD line, signal line, and MACD histogram.
@@ -83,5 +76,14 @@ class MACD:
         """
         np.append(self.data, data_point)
         if len(self.data) > self.long_period:
-            self.calculate_macd()        
+            self.calculate_macd()    
+    
+    def get_lines(self):
+        """
+        Returns:
+            tuple: The calculated MACD line, signal line, and MACD histogram.
+        """
+        return self.macd_line[-1], self.signal_line[-1], self.macd_histogram[-1]
+    
+        
         

@@ -12,15 +12,6 @@ class STOCHOSCILLATOR:
         if len(self.high_prices) > self.period and len(self.low_prices) > self.period and len(self.close_prices) > self.period:
             self.calculate()
 
-    def add_data(self, high, low, close):
-        self.high_prices.append(high)
-        self.low_prices.append(low)
-        self.close_prices.append(close)
-        if len(self.high_prices) > self.period:
-            self.high_prices = self.high_prices[-self.period:]
-            self.low_prices = self.low_prices[-self.period:]
-            self.close_prices = self.close_prices[-self.period:]
-
     def calculate(self):
         if len(self.high_prices) < self.period:
             return None
@@ -37,10 +28,19 @@ class STOCHOSCILLATOR:
         self.stoch, self.smoothed =  stochastic_value, smoothed_stochastic
 
     def is_oversold(self, stochastic_value):
-        return stochastic_value <= self.oversold_threshold
+        return self.stoch <= self.oversold_threshold
 
     def is_overbought(self, stochastic_value):
-        return stochastic_value >= self.overbought_threshold
+        return self.stoch >= self.overbought_threshold
+    
+    def add_data_point(self, high, low, close):
+        self.high_prices.append(high)
+        self.low_prices.append(low)
+        self.close_prices.append(close)
+        if len(self.high_prices) > self.period:
+            self.high_prices = self.high_prices[-self.period:]
+            self.low_prices = self.low_prices[-self.period:]
+            self.close_prices = self.close_prices[-self.period:]
     
     def get_stoch(self):
         return self.stoch

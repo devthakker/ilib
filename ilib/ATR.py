@@ -14,6 +14,21 @@ class AverageTrueRange:
         if len(self.high_prices) > self.period:
             self.calculate()
 
+    def calculate(self):
+        """
+        Calculate the Average True Range (ATR) of a stock.
+        """
+        if len(self.high_prices) < self.period:
+            return None
+        true_ranges = []
+        for i in range(len(self.high_prices)):
+            high_low_range = self.high_prices[i] - self.low_prices[i]
+            high_close_range = abs(self.high_prices[i] - self.close_prices[i - 1])
+            low_close_range = abs(self.low_prices[i] - self.close_prices[i - 1])
+            true_range = max(high_low_range, high_close_range, low_close_range)
+            true_ranges.append(true_range)
+        self.ATR =  sum(true_ranges) / len(true_ranges)
+        
     def add_data_point(self, high, low, close):
         """
         Add a new price to the data list and recalculate the ATR.
@@ -34,21 +49,6 @@ class AverageTrueRange:
             self.low_prices = self.low_prices[-self.period:]
             self.close_prices = self.close_prices[-self.period:]
             self.calculate()
-
-    def calculate(self):
-        """
-        Calculate the Average True Range (ATR) of a stock.
-        """
-        if len(self.high_prices) < self.period:
-            return None
-        true_ranges = []
-        for i in range(len(self.high_prices)):
-            high_low_range = self.high_prices[i] - self.low_prices[i]
-            high_close_range = abs(self.high_prices[i] - self.close_prices[i - 1])
-            low_close_range = abs(self.low_prices[i] - self.close_prices[i - 1])
-            true_range = max(high_low_range, high_close_range, low_close_range)
-            true_ranges.append(true_range)
-        self.ATR =  sum(true_ranges) / len(true_ranges)
     
     def get_ATR(self):
         """Return the current ATR value."""

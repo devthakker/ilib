@@ -22,14 +22,6 @@ class RSI:
             if len(self.data) > self.period:
                 self.calculate_rsi()
 
-    def add_data_point(self, value):
-        """
-        Add a new price to the data list and calculate the new RSI.
-        """
-        self.data.append(value)
-        if(len(self.data) > self.period):
-            self.calculate_rsi()
-
     def calculate_rsi(self):
         """
         Calculate the RSI of the stock based on its historical price data.
@@ -61,6 +53,14 @@ class RSI:
         rs = avg_gain / avg_loss
         rsi = 100 - (100 / (1 + rs))
         self.rsi = rsi
+        
+    def add_data_point(self, value):
+        """
+        Add a new price to the data list and calculate the new RSI.
+        """
+        self.data.append(value)
+        if(len(self.data) > self.period):
+            self.calculate_rsi()
         
     def get_rsi(self):
         """

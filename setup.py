@@ -7,7 +7,7 @@ setup(
         packages=find_packages(),
         license='MIT',
         description='A package for various technical indicators',
-        install_requires=['numpy', 'pandas'],
+        install_requires=['numpy', 'pandas', 'matplotlib'],
         author='Devin Thakker',
         author_email='devin.thakker@outlook.com',
         url='https://github.com/devthakker/ilib',

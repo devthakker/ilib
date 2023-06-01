@@ -36,7 +36,8 @@ class RSI:
         gains = []
         losses = []
         
-        for i in range(1, len(self.data)):
+        for i in range(len(self.data)-self.period , len(self.data)):
+            print(i)
             price_diff = self.data[i] - self.data[i - 1]
             if price_diff > 0:
                 gains.append(price_diff)
@@ -76,6 +77,7 @@ class RSI:
         self.data.append(value)
         if(len(self.data) > self.period):
             self.calculate_rsi()
+        return
         
     def get_rsi(self):
         """
@@ -87,11 +89,20 @@ class RSI:
         Plot the RSI values over time.
         """
         plt.plot(self.rsi_values)
-        plt.title('RSI')
+        plt.ylabel('RSI Values')
+        plt.xlabel('Current Calculation')
+        plt.title('RSI Chart')
         plt.show()
-
-    
-prices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
-rsi = RSI(data=prices)
-print(rsi.get_rsi())
-rsi.plot_show()
+        return
+        
+    def plot_save(self, filename):
+        """
+        Save the RSI values over time to a file.
+        """
+        plt.plot(self.rsi_values)
+        plt.ylabel('RSI Values')
+        plt.xlabel('Current Calculation')
+        plt.title('RSI Chart')
+        plt.savefig(filename)
+        plt.close()
+        return

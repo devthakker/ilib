@@ -99,7 +99,9 @@ class RSI:
         """
         Save the RSI values over time to a file.
         """
-        plt.plot(self.rsi_values)
+        plt.plot(self.rsi_values, label='RSI')
+        plt.plot(self.data, label='Data')
+        plt.legend(loc = 'upper left')
         plt.ylabel('RSI Values')
         plt.xlabel('Current Calculation')
         plt.title('RSI Chart')

@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -8,7 +9,7 @@ class BollingerBands:
     Parameters:
         data (list or numpy array): The input data for which Bollinger Bands need to be calculated.
         window (int, optional): The size of the moving window. Default is 20.
-        num_std (int, optional): The number of standard deviations for the Bollinger Bands. Default is 2.
+        num_std (int, optional): The number of standard deviations for the Bollinger Bands. Default is 1.
     """
     def __init__(self, window=20, num_std=1, data=None):
         if data is None:
@@ -61,24 +62,34 @@ class BollingerBands:
         """
         Plot the Bollinger Bands calculated.
         """
-        import matplotlib.pyplot as plt
         plt.figure(figsize=(12,6))
+        plt.title('Bollinger Bands - Period {} - {} Std. Deviation'.format(self.window, self.num_std))
         plt.plot(self.data, label='Price')
-        plt.plot(self.upper_band, label='Upper Band')
-        plt.plot(self.middle_band, label='Middle Band')
-        plt.plot(self.lower_band, label='Lower Band')
+        plt.plot(self.upper_band[-1].values, label='Upper Band')
+        plt.plot(self.middle_band[-1].values, label='Middle Band')
+        plt.plot(self.lower_band[-1].values, label='Lower Band')
         plt.legend(loc='upper left')
         plt.show()
         return
     
-prices = [44.12, 44.53, 44 , 43.61, 44.33, 44.83, 45.1 , 45.42, 45.84, 46.08, 45.89, 46.03, 45.61, 46.28, 46.28]
-added = [46 , 46.03, 46.41, 46.22, 45.64, 46.21, 46.25, 45.71, 46.45, 45.78, 45.35, 44.03, 44.18, 44.22, 44.57, 43.42, 42.66, 43.13]
-
-ema = BollingerBands(10, prices)
-for i in added:
-    ema.add_data_point(i)
+    def plot_save(self, path):
+        """
+        Save the Bollinger Bands calculated to a file.
+        
+        Parameters:
+            path (str): The path to the file where the Bollinger Bands plot is to be saved.
+        """
+        plt.figure(figsize=(12,6))
+        plt.title('Bollinger Bands - Period {} - {} Std. Deviation'.format(self.window, self.num_std))
+        plt.plot(self.data, label='Price')
+        plt.plot(self.upper_band[-1].values, label='Upper Band')
+        plt.plot(self.middle_band[-1].values, label='Middle Band')
+        plt.plot(self.lower_band[-1].values, label='Lower Band')
+        plt.legend(loc='upper left')
+        plt.savefig(path)
+        return
     
-ema.plot_show()
+
 
 
 

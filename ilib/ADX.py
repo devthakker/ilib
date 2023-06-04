@@ -22,7 +22,6 @@ class ADX:
         self.true_ranges = []
         self.directional_movements = []
         self.directional_movement_index = None if len(self.high_prices) < self.period else self.calculate()
-        self.directional_movement_index_values = []
 
     def calculate(self):
         """
@@ -47,7 +46,7 @@ class ADX:
 
         self.directional_movement_index = directional_movement_index
         
-        self.directional_movement_index_values.append(directional_movement_index)
+        self.directional_movements.append(directional_movement_index)
 
     def calculate_true_ranges(self):
         """
@@ -68,7 +67,7 @@ class ADX:
         self.positive_directional_movements = []
         self.negative_directional_movements = []
         for i in range(len(self.high_prices)-self.period,len(self.high_prices)):
-            if i == 0:
+            if i == len(self.high_prices)-self.period:
                 self.positive_directional_movements.append(0)
                 self.negative_directional_movements.append(0)
                 self.previous_high = self.high_prices[i]
@@ -115,7 +114,7 @@ class ADX:
         ax1.set_title('Stock')
         ax1.set_ylabel('Price')
         ax1.legend(loc='upper left')
-        ax2.plot(self.directional_movement_index_values, label='Directional Movement Index')
+        ax2.plot(self.directional_movements, label='Directional Movement Index')
         ax2.set_title('Directional Movement Index')
         ax2.set_xlabel('Period')
         ax2.set_ylabel('Directional Movement Index')
@@ -134,6 +133,6 @@ ema = ADX(10, high_prices, low_prices, close_prices)
 for i in range(len(add_high)):
     ema.add_data_point(add_high[i], add_low[i], add_close[i])
     
-print(ema.directional_movement_index_values)
+print(ema.directional_movements)
 
 ema.plot_show()

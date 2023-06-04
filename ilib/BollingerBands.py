@@ -88,6 +88,3 @@ class BollingerBands:
         plt.legend(loc='upper left')
         plt.savefig(path)
         return
-    
-
-

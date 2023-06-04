@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 class ADX:
     """
     Average Directional Index
@@ -6,7 +8,10 @@ class ADX:
         period (int): The period of the ADX.
         high_prices (list): The high prices of the stock.
         low_prices (list): The low prices of the stock.
-        close_prices (list): The close prices of the stock."""
+        close_prices (list): The close prices of the stock.
+    """
+        
+        
     def __init__(self, period, high_prices=None, low_prices=None, close_prices=None):
         self.period = period
         self.high_prices = [] if high_prices is None else high_prices
@@ -17,6 +22,7 @@ class ADX:
         self.true_ranges = []
         self.directional_movements = []
         self.directional_movement_index = None if len(self.high_prices) < self.period else self.calculate()
+        self.directional_movement_index_values = []
 
     def calculate(self):
         """
@@ -40,13 +46,15 @@ class ADX:
         directional_movement_index = abs(positive_directional_index - negative_directional_index) / (positive_directional_index + negative_directional_index) * 100
 
         self.directional_movement_index = directional_movement_index
+        
+        self.directional_movement_index_values.append(directional_movement_index)
 
     def calculate_true_ranges(self):
         """
         Calculates the true ranges of a stock.
         """
         self.true_ranges = []
-        for i in range(len(self.high_prices)):
+        for i in range(len(self.high_prices)-self.period,len(self.high_prices)):
             high_low_range = self.high_prices[i] - self.low_prices[i]
             high_close_range = abs(self.high_prices[i] - self.close_prices[i - 1])
             low_close_range = abs(self.low_prices[i] - self.close_prices[i - 1])
@@ -59,7 +67,7 @@ class ADX:
         """
         self.positive_directional_movements = []
         self.negative_directional_movements = []
-        for i in range(len(self.high_prices)):
+        for i in range(len(self.high_prices)-self.period,len(self.high_prices)):
             if i == 0:
                 self.positive_directional_movements.append(0)
                 self.negative_directional_movements.append(0)
@@ -87,10 +95,6 @@ class ADX:
         self.low_prices.append(low)
         self.close_prices.append(close)
         if len(self.high_prices) > self.period:
-            self.high_prices = self.high_prices[-self.period:]
-            self.low_prices = self.low_prices[-self.period:]
-            self.close_prices = self.close_prices[-self.period:]
-            
             self.calculate()
     
     def get_directional_movement_index(self):
@@ -99,3 +103,37 @@ class ADX:
             float: The ADX of the stock.
         """
         return self.directional_movement_index
+
+    def plot_show(self):
+        """
+        Plots the ADX.
+        """
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
+        ax1.plot(self.high_prices, label='High')
+        ax1.plot(self.low_prices, label='Low')
+        ax1.plot(self.close_prices, label='Close')
+        ax1.set_title('Stock')
+        ax1.set_ylabel('Price')
+        ax1.legend(loc='upper left')
+        ax2.plot(self.directional_movement_index_values, label='Directional Movement Index')
+        ax2.set_title('Directional Movement Index')
+        ax2.set_xlabel('Period')
+        ax2.set_ylabel('Directional Movement Index')
+        ax2.legend(loc='upper left')
+        plt.show()
+        
+high_prices = [44.12, 44.53, 44 , 43.61, 44.33, 44.83, 45.1 , 45.42, 45.84, 46.08, 45.89, 45.03, 45.61, 46.28, 46.28]
+low_prices = [43.11, 43.84, 43.11, 43.11, 43.61, 44.41, 44.23, 44.8 , 45.01, 45.62, 44.8 , 44.75, 45.2 , 45.75, 45.75]
+close_prices = [43.84, 44.23, 43.34, 43.61, 44.23, 44.41, 44.8 , 44.84, 45.62, 45.89, 45.03, 44.75, 45.2 , 45.75, 46.03]
+
+add_high = [46 , 46.03, 46.41, 46.22, 45.64, 46.21, 46.25, 45.71, 46.45,  47.35, 45.90, 44.18, 44.22, 44.57, 43.42, 42.66, 43.13]
+add_low = [45.80, 45.21, 45.80, 45.90, 45.01, 45.61, 45.71, 45.61, 45.71, 46.22, 45.61, 43.61, 43.61, 43.61, 42.66, 42.66, 42.66]
+add_close = [45.80, 45.61, 45.80, 45.90, 45.01, 45.61, 45.71, 45.61, 45.71, 46.22, 45.61, 43.61, 43.61, 43.61, 42.66, 42.66, 42.66]
+
+ema = ADX(10, high_prices, low_prices, close_prices)
+for i in range(len(add_high)):
+    ema.add_data_point(add_high[i], add_low[i], add_close[i])
+    
+print(ema.directional_movement_index_values)
+
+ema.plot_show()

@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 class CCI:
     """
@@ -71,4 +72,35 @@ class CCI:
             float: The current CCI value.
         """
         return self.cci[-1]
+    
+    def plot_show(self):
+        """
+        Plot the CCI values calculated.
+        """
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 6))
+        ax1.set_title('Stock Prices')
+        ax1.plot(self.data, label='High')
+        ax1.legend(loc='upper left')
+        ax2.set_title('CCI - {} period'.format(self.period))
+        ax2.plot(self.cci, label='CCI')
+        plt.tight_layout()
+        plt.show()
+        return
+    
+    def plot_save(self, filename):
+        """
+        Plot the CCI values calculated and save to file.
+        
+        Parameters:
+            filename (str): The filename to save the plot to.
+        """
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 6))
+        ax1.set_title('Stock Prices')
+        ax1.plot(self.data, label='High')
+        ax1.legend(loc='upper left')
+        ax2.set_title('CCI - {} period'.format(self.period))
+        ax2.plot(self.cci, label='CCI')
+        plt.tight_layout()
+        plt.savefig(filename)
+        return
         

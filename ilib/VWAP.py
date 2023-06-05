@@ -71,7 +71,7 @@ class VWAP:
     
     def plot_show(self):
         """
-        Plot the CCI values calculated.
+        Plot the VWAP values calculated.
         """
         plt.figure(figsize=(12, 6))
         plt.title('VWAP')
@@ -82,7 +82,7 @@ class VWAP:
     
     def plot_save(self, filename):
         """
-        Plot the CCI values calculated and save to file.
+        Plot the VWAP values calculated and save to file.
         
         Parameters:
             filename (str): The filename to save the plot to.

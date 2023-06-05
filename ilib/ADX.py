@@ -121,3 +121,25 @@ class ADX:
         ax2.legend(loc='upper left')
         plt.show()
         
+    def plot_save(self, filename):
+        """
+        Plots the ADX and saves it to a file.
+        
+        Args:
+            filename (str): The filename to save the plot to.
+        """
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
+        ax1.plot(self.high_prices, label='High')
+        ax1.plot(self.low_prices, label='Low')
+        ax1.plot(self.close_prices, label='Close')
+        ax1.set_title('Stock')
+        ax1.set_ylabel('Price')
+        ax1.legend(loc='upper left')
+        ax2.plot(self.directional_movements, label='Directional Movement Index')
+        ax2.set_title('Directional Movement Index')
+        ax2.set_xlabel('Period')
+        ax2.set_ylabel('Directional Movement Index')
+        ax2.legend(loc='upper left')
+        plt.savefig(filename)
+        plt.close()
+        

@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 class STOCHOSCILLATOR:
     """
     Stochastic Oscillator
@@ -16,8 +18,11 @@ class STOCHOSCILLATOR:
         self.high_prices = high_prices if high_prices is not None else []
         self.low_prices = low_prices if low_prices is not None else []
         self.close_prices = close_prices if close_prices is not None else []
+        self.stoch_values = []
+        self.smoothed_values = []
         if len(self.high_prices) > self.period and len(self.low_prices) > self.period and len(self.close_prices) > self.period:
             self.calculate()
+
 
     def calculate(self):
         """
@@ -36,6 +41,8 @@ class STOCHOSCILLATOR:
             smoothed_stochastic = None
 
         self.stoch, self.smoothed =  stochastic_value, smoothed_stochastic
+        self.stoch_values.append(stochastic_value)
+        self.smoothed_values.append(smoothed_stochastic)
 
     def is_oversold(self):
         """
@@ -57,9 +64,7 @@ class STOCHOSCILLATOR:
         self.low_prices.append(low)
         self.close_prices.append(close)
         if len(self.high_prices) > self.period:
-            self.high_prices = self.high_prices[-self.period:]
-            self.low_prices = self.low_prices[-self.period:]
-            self.close_prices = self.close_prices[-self.period:]
+            self.calculate()
     
     def get_stoch(self):
         """
@@ -72,3 +77,39 @@ class STOCHOSCILLATOR:
         Returns the smoothed stochastic oscillator.
         """
         return self.smoothed
+    
+    def plot_show(self):
+        """
+        Plots the stochastic oscillator.
+        """
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 6))
+        ax1.set_title('Stock Prices')
+        ax1.plot(self.high_prices, label='High Price')
+        ax1.plot(self.low_prices, label='Low Price')
+        ax1.plot(self.close_prices, label='Close Price')
+        ax1.legend(loc='upper left')
+        ax2.set_title('Stoch - {} Period - {} Smoothing Period'.format(self.period, self.smoothing_period))
+        ax2.plot(self.stoch_values, label='Stoch')
+        ax2.plot(self.smoothed_values, label='Smoothed')
+        ax2.legend(loc='upper left')
+        plt.tight_layout()
+        plt.show()
+        return
+
+    def plot_save(self, path):
+        """
+        Saves the stochastic oscillator plot to the path.
+        """
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 6))
+        ax1.set_title('Stock Prices')
+        ax1.plot(self.high_prices, label='High Price')
+        ax1.plot(self.low_prices, label='Low Price')
+        ax1.plot(self.close_prices, label='Close Price')
+        ax1.legend(loc='upper left')
+        ax2.set_title('Stoch - {} Period - {} Smoothing Period'.format(self.period, self.smoothing_period))
+        ax2.plot(self.stoch_values, label='Stoch')
+        ax2.plot(self.smoothed_values, label='Smoothed')
+        ax2.legend(loc='upper left')
+        plt.tight_layout()
+        plt.savefig(path)
+        return

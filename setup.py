@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup( 
         name='ilib',
-        version='0.2',
+        version='0.3',
         # packages=find_packages(exclude=['tests*']),
         packages=find_packages(),
         license='MIT',
@@ -11,7 +11,7 @@ setup(
         author='Devin Thakker',
         author_email='devin.thakker@outlook.com',
         url='https://github.com/devthakker/ilib',
-        download_url='https://github.com/devthakker/ilib/archive/refs/tags/v0.2.tar.gz',
+        download_url='https://github.com/devthakker/ilib/archive/refs/tags/v0.3.tar.gz',
         keywords=['ilib', 'technical indicators', 'finance', 'trading', 'stocks', 'crypto'],
         classifiers=[
             'Development Status :: 3 - Alpha',

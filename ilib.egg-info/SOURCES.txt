@@ -12,6 +12,7 @@ ilib/MACD.py
 ilib/RSI.py
 ilib/SMA.py
 ilib/STOCHOSCILLATOR.py
+ilib/STOCHRSI.py
 ilib/VWAP.py
 ilib/__init__.py
 ilib.egg-info/PKG-INFO
